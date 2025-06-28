@@ -1,0 +1,96 @@
+[
+    {
+        "label": "tensorflow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "keras",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "keras",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "keras",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "layers",
+        "importPath": "tensorflow.keras",
+        "description": "tensorflow.keras",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.evacuate_model",
+        "description": "src.evacuate_model",
+        "peekOfCode": "def main():\n    # Carregar modelo\n    model = keras.models.load_model(\"mnist_model.h5\")\n    # Carregar dados de teste\n    (_, _), (x_test, y_test) = keras.datasets.mnist.load_data()\n    x_test = x_test.astype(\"float32\") / 255.0\n    x_test = np.expand_dims(x_test, -1)\n    # Avaliar modelo\n    loss, acc = model.evaluate(x_test, y_test, verbose=2)\n    print(f\"Acurácia no teste: {acc*100:.2f}%\")",
+        "detail": "src.evacuate_model",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.train_model",
+        "description": "src.train_model",
+        "peekOfCode": "def main():\n    # Carregar dados MNIST\n    (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()\n    x_train = x_train.astype(\"float32\") / 255.0\n    x_test = x_test.astype(\"float32\") / 255.0\n    # Remodelar para [amostras, 28, 28, 1]\n    x_train = np.expand_dims(x_train, -1)\n    x_test = np.expand_dims(x_test, -1)\n    # Construir modelo simples\n    model = keras.Sequential([",
+        "detail": "src.train_model",
+        "documentation": {}
+    },
+    {
+        "label": "img",
+        "kind": 5,
+        "importPath": "index",
+        "description": "index",
+        "peekOfCode": "img = Image.open('data/cinco.jpg').convert('L')",
+        "detail": "index",
+        "documentation": {}
+    }
+]
