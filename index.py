@@ -1,26 +1,29 @@
-from tensorflow import keras
-import numpy as np
-from PIL import Image
-import matplotlib.pyplot as plt
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'   # Suprime avisos e info do TensorFlow
+import tensorflow as tf
+import warnings
+warnings.filterwarnings("ignore")          # Suprime warnings do Python (incluindo absl)
+import absl.logging
+absl.logging.set_verbosity(absl.logging.ERROR)
 
-img = Image.open('data/cinco.jpg').convert('L')
-img = img.resize((28, 28))
-img_array = np.array(img).astype('float32') / 255.0
-img_array = 1.0 - img_array
-img_array = np.expand_dims(img_array, axis=(0, -1))
+from src.functions.indetifyImage import indenfityImage
 
-print("\nimagens carregadas\n")
-
-model = keras.models.load_model("mnist_model.h5")
-
-print("\nmodelo carregado \n")
-
-prediction = model.predict(img_array)
-predicted_digit = np.argmax(prediction[0])
-
-print(f"\nModelo previu: {predicted_digit}")
-
-plt.imshow(img_array[0, :, :, 0], cmap='gray')
-plt.title(f"Previsto: {predicted_digit}")
-plt.axis('off')
-plt.show()
+while True:
+    print()
+    print("Selecione uma imagem")
+    print("--------------------")
+    print("1 - cinco.jpg")
+    print("2 - sete.webp")
+    print("0 - Sair")
+    print("--------------------")
+    
+    text = int(input("Selecione: "))
+    
+    if text == 0:
+        break
+    
+    if text == 1:
+        indenfityImage("data/cinco.jpg")
+        
+    if text == 2: 
+        indenfityImage("data/sete.webp")
