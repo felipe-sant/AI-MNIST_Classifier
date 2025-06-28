@@ -16,8 +16,13 @@ def main():
     # Construir modelo simples
     model = keras.Sequential([
         layers.Input(shape=(28, 28, 1)),
+        layers.Conv2D(32, (3, 3), activation="relu"),
+        layers.MaxPooling2D((2, 2)),
+        layers.Conv2D(64, (3, 3), activation="relu"),
+        layers.MaxPooling2D((2, 2)),
         layers.Flatten(),
-        layers.Dense(128, activation="relu"),
+        layers.Dropout(0.5),  # Ajuda a evitar overfitting
+        layers.Dense(64, activation="relu"),
         layers.Dense(10, activation="softmax"),
     ])
 
@@ -28,7 +33,7 @@ def main():
     )
 
     # Treinar modelo
-    model.fit(x_train, y_train, epochs=5, batch_size=32, validation_split=0.1)
+    model.fit(x_train, y_train, epochs=8, batch_size=64, validation_split=0.1)
 
     # Salvar modelo
     model.save("mnist_model.h5")
