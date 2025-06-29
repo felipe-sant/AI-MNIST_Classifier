@@ -25,6 +25,14 @@
         "documentation": {}
     },
     {
+        "label": "keras",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "isExtraImport": true,
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -59,6 +67,55 @@
         "documentation": {}
     },
     {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "src.evacuate_model",
@@ -81,7 +138,16 @@
         "kind": 5,
         "importPath": "index",
         "description": "index",
-        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Hello, Railway!\"}",
+        "peekOfCode": "app = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    img = Image.open(io.BytesIO(await file.read())).convert('L').resize((28, 28))\n    img_array = np.array(img).astype('float32') / 255.0\n    img_array = 1.0 - img_array\n    img_array = np.expand_dims(img_array, axis=(0, -1))\n    prediction = model.predict(img_array)\n    predicted_digit = int(np.argmax(prediction[0]))",
+        "detail": "index",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "index",
+        "description": "index",
+        "peekOfCode": "model = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    img = Image.open(io.BytesIO(await file.read())).convert('L').resize((28, 28))\n    img_array = np.array(img).astype('float32') / 255.0\n    img_array = 1.0 - img_array\n    img_array = np.expand_dims(img_array, axis=(0, -1))\n    prediction = model.predict(img_array)\n    predicted_digit = int(np.argmax(prediction[0]))\n    return { \"predict\": predicted_digit }",
         "detail": "index",
         "documentation": {}
     }
