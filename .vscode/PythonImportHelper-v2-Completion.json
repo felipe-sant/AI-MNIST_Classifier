@@ -143,11 +143,11 @@
         "documentation": {}
     },
     {
-        "label": "indenfityImage",
-        "importPath": "src.functions.indetifyImage",
-        "description": "src.functions.indetifyImage",
+        "label": "identifyImage",
+        "importPath": "src.functions.identifyImage",
+        "description": "src.functions.identifyImage",
         "isExtraImport": true,
-        "detail": "src.functions.indetifyImage",
+        "detail": "src.functions.identifyImage",
         "documentation": {}
     },
     {
@@ -173,7 +173,7 @@
         "kind": 5,
         "importPath": "index",
         "description": "index",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nwarnings.filterwarnings(\"ignore\")\nabsl.logging.set_verbosity(absl.logging.ERROR)\nfrom fastapi import FastAPI, UploadFile, File\nfrom tensorflow import keras\nfrom src.functions.indetifyImage import indenfityImage\napp = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nwarnings.filterwarnings(\"ignore\")\nabsl.logging.set_verbosity(absl.logging.ERROR)\nfrom fastapi import FastAPI, UploadFile, File\nfrom tensorflow import keras\nfrom src.functions.identifyImage import identifyImage  # Certifique-se do nome correto\napp = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):",
         "detail": "index",
         "documentation": {}
     },
@@ -182,7 +182,7 @@
         "kind": 5,
         "importPath": "index",
         "description": "index",
-        "peekOfCode": "app = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    predict = await indenfityImage(model, file)\n    return { \"predict\": predict }\n@app.get(\"/\")\nasync def test():\n    return \"IAService is working!\"",
+        "peekOfCode": "app = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    prediction = await identifyImage(model, file)\n    return { \"predict\": prediction }\n@app.get(\"/\")\nasync def test():\n    return {\"message\": \"IAService is working!\"}",
         "detail": "index",
         "documentation": {}
     },
@@ -191,7 +191,7 @@
         "kind": 5,
         "importPath": "index",
         "description": "index",
-        "peekOfCode": "model = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    predict = await indenfityImage(model, file)\n    return { \"predict\": predict }\n@app.get(\"/\")\nasync def test():\n    return \"IAService is working!\"",
+        "peekOfCode": "model = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    prediction = await identifyImage(model, file)\n    return { \"predict\": prediction }\n@app.get(\"/\")\nasync def test():\n    return {\"message\": \"IAService is working!\"}",
         "detail": "index",
         "documentation": {}
     }
