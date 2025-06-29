@@ -9,7 +9,7 @@ absl.logging.set_verbosity(absl.logging.ERROR)
 from fastapi import FastAPI, UploadFile, File
 from tensorflow import keras
 
-from src.functions.identifyImage import identifyImage  # Certifique-se do nome correto
+from src.functions.identifyImage import identifyImage
 
 app = FastAPI()
 model = keras.models.load_model("mnist_model.h5")

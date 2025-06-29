@@ -173,7 +173,7 @@
         "kind": 5,
         "importPath": "index",
         "description": "index",
-        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nwarnings.filterwarnings(\"ignore\")\nabsl.logging.set_verbosity(absl.logging.ERROR)\nfrom fastapi import FastAPI, UploadFile, File\nfrom tensorflow import keras\nfrom src.functions.identifyImage import identifyImage  # Certifique-se do nome correto\napp = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):",
+        "peekOfCode": "os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'\nwarnings.filterwarnings(\"ignore\")\nabsl.logging.set_verbosity(absl.logging.ERROR)\nfrom fastapi import FastAPI, UploadFile, File\nfrom tensorflow import keras\nfrom src.functions.identifyImage import identifyImage\napp = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):",
         "detail": "index",
         "documentation": {}
     },
