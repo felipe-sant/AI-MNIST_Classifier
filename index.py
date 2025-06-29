@@ -1,29 +1,23 @@
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'   # Suprime avisos e info do TensorFlow
 import tensorflow as tf
 import warnings
-warnings.filterwarnings("ignore")          # Suprime warnings do Python (incluindo absl)
 import absl.logging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.filterwarnings("ignore")
 absl.logging.set_verbosity(absl.logging.ERROR)
 
+from fastapi import FastAPI, UploadFile, File
+from tensorflow import keras
 from src.functions.indetifyImage import indenfityImage
 
-while True:
-    print()
-    print("Selecione uma imagem")
-    print("--------------------")
-    print("1 - cinco.jpg")
-    print("2 - sete.webp")
-    print("0 - Sair")
-    print("--------------------")
-    
-    text = int(input("Selecione: "))
-    
-    if text == 0:
-        break
-    
-    if text == 1:
-        indenfityImage("data/cinco.jpg")
-        
-    if text == 2: 
-        indenfityImage("data/sete.webp")
+app = FastAPI()
+model = keras.models.load_model("mnist_model.h5")
+
+@app.post("/predict")
+async def predict(file: UploadFile = File(...)):
+    response = await indenfityImage(model, file)
+    return response
+
+@app.get("/")
+async def teste():
+    return "Teste"
