@@ -20,12 +20,15 @@ Este projeto usa Deep Learning (Keras/TensorFlow) para treinar uma rede neural c
    python src/train_model.py
    ```
 
-4. Avalie o modelo:
+   Caso queira testar:
    ```
    python src/evaluate_model.py
    ```
 
-O projeto é didático, ideal para quem está começando em IA e Deep Learning.
+4. Execute o comando
+    ```
+    uvicorn index:app
+    ```
 
 ## Estrutura
 
