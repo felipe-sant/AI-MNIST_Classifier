@@ -182,7 +182,7 @@
         "kind": 5,
         "importPath": "index",
         "description": "index",
-        "peekOfCode": "app = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    response = await indenfityImage(model, file)\n    return response\n@app.get(\"/\")\nasync def test():\n    return \"IAService is working!\"",
+        "peekOfCode": "app = FastAPI()\nmodel = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    predict = await indenfityImage(model, file)\n    return { \"predict\": predict }\n@app.get(\"/\")\nasync def test():\n    return \"IAService is working!\"",
         "detail": "index",
         "documentation": {}
     },
@@ -191,7 +191,7 @@
         "kind": 5,
         "importPath": "index",
         "description": "index",
-        "peekOfCode": "model = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    response = await indenfityImage(model, file)\n    return response\n@app.get(\"/\")\nasync def test():\n    return \"IAService is working!\"",
+        "peekOfCode": "model = keras.models.load_model(\"mnist_model.h5\")\n@app.post(\"/predict\")\nasync def predict(file: UploadFile = File(...)):\n    predict = await indenfityImage(model, file)\n    return { \"predict\": predict }\n@app.get(\"/\")\nasync def test():\n    return \"IAService is working!\"",
         "detail": "index",
         "documentation": {}
     }

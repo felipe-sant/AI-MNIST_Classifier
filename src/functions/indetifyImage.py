@@ -10,6 +10,6 @@ async def indenfityImage(model, file: UploadFile = File(...)):
     img_array = 1.0 - img_array
     img_array = np.expand_dims(img_array, axis=(0, -1))
     prediction = model.predict(img_array)
-    predicted_digit = np.argmax(prediction[0])
+    predicted_digit = int(np.argmax(prediction[0]))
 
     return predicted_digit

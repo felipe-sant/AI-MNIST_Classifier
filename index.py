@@ -15,9 +15,9 @@ model = keras.models.load_model("mnist_model.h5")
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
-    response = await indenfityImage(model, file)
-    return response
+    predict = await indenfityImage(model, file)
+    return { "predict": predict }
 
 @app.get("/")
 async def test():
-    return "IAService is working!"
+    return "IAService is working!"  
