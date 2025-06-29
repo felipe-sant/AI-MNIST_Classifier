@@ -19,5 +19,5 @@ async def predict(file: UploadFile = File(...)):
     return response
 
 @app.get("/")
-async def teste():
-    return "Teste"
+async def test():
+    return "IAService is working!"
