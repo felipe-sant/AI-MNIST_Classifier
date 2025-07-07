@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import io
 
 app = FastAPI()
-model = keras.models.load_model("mnist_model.h5")
+model = keras.models.load_model("mnist_best_model.h5")
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):

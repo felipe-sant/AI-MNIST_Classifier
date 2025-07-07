@@ -4,6 +4,12 @@
       ".vscode": true,
       ".gitignore": true,
       "README.md": true,
-      "**/__pycache__": true
+      "**/__pycache__": true,
+      "Procfile": true,
+      "requirements.txt": true,
+      "runtime.txt": true,
+      "LICENSE": true,
+      ".python-version": true,
+      "venv": true
     }
   }
