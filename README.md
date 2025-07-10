@@ -1,4 +1,11 @@
+<div align="center">
+
 # Classificador de Dígitos Manuscritos (MNIST)
+
+![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![tensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+
+</div>
 
 Este projeto usa Deep Learning (Keras/TensorFlow) para treinar uma rede neural capaz de reconhecer dígitos manuscritos usando o dataset público MNIST.
 
@@ -35,3 +42,9 @@ Este projeto usa Deep Learning (Keras/TensorFlow) para treinar uma rede neural c
 - `src/train_model.py`: Treinamento do modelo
 - `src/evaluate_model.py`: Avaliação do modelo treinado
 - `src/utils.py`: Funções auxiliares
+
+<hr>
+
+<div align="center">
+    developed by <a href="https://github.com/felipe-sant?tab=followers">@felipe-sant</a>
+</div>
